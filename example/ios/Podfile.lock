@@ -1,0 +1,28 @@
+PODS:
+  - CLPlayer (1.2.2):
+    - Masonry
+  - Flutter (1.0.0)
+  - Masonry (1.1.0)
+  - video_player (0.0.1):
+    - CLPlayer
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - video_player (from `Pods/.symlinks/plugins/video_player/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Pods/.symlinks/flutter/ios
+  video_player:
+    :path: Pods/.symlinks/plugins/video_player/ios
+
+SPEC CHECKSUMS:
+  CLPlayer: 4f4ea32ee2e9bc3b3a3143dff0c0bbe9c6dae4c3
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  video_player: 31f0f9eea22209ceaceba771e332ecb8714f4466
+
+PODFILE CHECKSUM: 0420ab312a523ae0eecfb1fc19ea51dd82cc17c7
+
+COCOAPODS: 1.4.0
