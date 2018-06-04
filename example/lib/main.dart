@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async';
+
 /// An example of using the plugin, controlling lifecycle and playback of the
 /// video.
 
@@ -27,8 +29,7 @@ class VideoPlayPause extends StatefulWidget {
 }
 
 class _VideoPlayPauseState extends State<VideoPlayPause> {
-  FadeAnimation imageFadeAnim =
-  new FadeAnimation(child: new Icon(Icons.play_arrow, size: 100.0));
+  FadeAnimation imageFadeAnim = new FadeAnimation(child: new Icon(Icons.play_arrow, size: 100.0));
   VoidCallback listener;
 
   _VideoPlayPauseState() {
@@ -64,21 +65,17 @@ class _VideoPlayPauseState extends State<VideoPlayPause> {
             return;
           }
           if (controller.value.isPlaying) {
-            imageFadeAnim =
-            new FadeAnimation(child: new Icon(Icons.pause, size: 100.0));
+            imageFadeAnim = new FadeAnimation(child: new Icon(Icons.pause, size: 100.0));
             controller.pause();
           } else {
-            imageFadeAnim = new FadeAnimation(
-                child: new Icon(Icons.play_arrow, size: 100.0));
+            imageFadeAnim = new FadeAnimation(child: new Icon(Icons.play_arrow, size: 100.0));
             controller.play();
           }
         },
       ),
       new Align(
         alignment: Alignment.bottomCenter,
-        child: new VideoProgressIndicator(
-          controller,
-          allowScrubbing: true,
+        child: new VideoProgressIndicator(controller, allowScrubbing: true,
         ),
       ),
       new Center(child: imageFadeAnim),
@@ -223,6 +220,7 @@ Widget buildCard(String title) {
                 child: const Text('SELL TICKETS'),
                 onPressed: () {/* ... */},
               ),
+
             ],
           ),
         ),
@@ -322,6 +320,7 @@ class AspectRatioVideoState extends State<AspectRatioVideo> {
 }
 
 void main() {
+  Future<bool> _onWillPop()=>VideoPlayerController.setPort();
   runApp(
     new MaterialApp(
       home: new DefaultTabController(
@@ -334,19 +333,25 @@ void main() {
               tabs: <Widget>[
                 new Tab(icon: new Icon(Icons.fullscreen)),
                 new Tab(icon: new Icon(Icons.list)),
+
               ],
             ),
           ),
-          body: new TabBarView(
-            children: <Widget>[
-              new PlayerLifeCycle('http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4', false, 1.0, 0.34, (BuildContext context,VideoPlayerController controller){
-                return new AspectRatioVideo(controller);
-              }),
-              new PlayerLifeCycle('http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4', false, 1.0, 0.34, (BuildContext context,VideoPlayerController controller){
-                return new AspectRatioVideo(controller);
-              }),
-            ],
-          ),
+          body:
+          new WillPopScope(child: new Container(
+            child:  new TabBarView(
+              children: <Widget>[
+                new PlayerLifeCycle('http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4', false, 1.0, 0.34, (BuildContext context,VideoPlayerController controller){
+                  return new AspectRatioVideo(controller);
+                }),
+                new PlayerLifeCycle('http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4', false, 1.0, 0.34, (BuildContext context,VideoPlayerController controller){
+                  return new AspectRatioVideo(controller);
+                }),
+              ],
+            ),
+          ), onWillPop: _onWillPop,),
+
+
         ),
       ),
     ),

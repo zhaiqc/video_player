@@ -148,8 +148,8 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   Completer<Null> _creatingCompleter;
   StreamSubscription<dynamic> _eventSubscription;
   _VideoAppLifeCycleObserver _lifeCycleObserver;
-
   VideoPlayerController(this.uri,this.isHorizontal,this.widthPercentage,this.heightPercentage) : super(new VideoPlayerValue(duration: null));
+  static Future<bool>  setPort() => _channel.invokeMethod("setPort");
 
   Future<Null> initialize() async {
     _lifeCycleObserver = new _VideoAppLifeCycleObserver(this);
@@ -503,12 +503,11 @@ class VideoProgressIndicator extends StatefulWidget {
       this.controller, {
         VideoProgressColors colors,
         this.allowScrubbing,
-        this.padding: const EdgeInsets.only(top: 0.0),
+        this.padding: const EdgeInsets.only(top: 5.0),
       }) : colors = colors ?? new VideoProgressColors();
 
   @override
-  _VideoProgressIndicatorState createState() =>
-      new _VideoProgressIndicatorState();
+  _VideoProgressIndicatorState createState() => new _VideoProgressIndicatorState();
 }
 
 class _VideoProgressIndicatorState extends State<VideoProgressIndicator> {
