@@ -1,11 +1,11 @@
 PODS:
-  - CLPlayer (1.2.2):
-    - Masonry
   - Flutter (1.0.0)
   - Masonry (1.1.0)
+  - Reveal-SDK (10)
   - video_player (0.0.1):
-    - CLPlayer
     - Flutter
+    - Masonry
+    - Reveal-SDK (~> 10)
 
 DEPENDENCIES:
   - Flutter (from `Pods/.symlinks/flutter/ios`)
@@ -18,11 +18,11 @@ EXTERNAL SOURCES:
     :path: Pods/.symlinks/plugins/video_player/ios
 
 SPEC CHECKSUMS:
-  CLPlayer: 4f4ea32ee2e9bc3b3a3143dff0c0bbe9c6dae4c3
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  video_player: 31f0f9eea22209ceaceba771e332ecb8714f4466
+  Reveal-SDK: 7869ddf1f902cabbb07a1f0dd06bd25861a126f7
+  video_player: cee3cf366a7b484a86c082652b1f8c184c6549b1
 
-PODFILE CHECKSUM: 0420ab312a523ae0eecfb1fc19ea51dd82cc17c7
+PODFILE CHECKSUM: 47b09f9bef7b2f71af6fadccfe9f42384a3f5199
 
 COCOAPODS: 1.4.0

@@ -15,7 +15,8 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'CLPlayer'
+  s.dependency 'Masonry'
+  s.dependency 'Reveal-SDK','~> 10'
   
   s.ios.deployment_target = '8.0'
 end
